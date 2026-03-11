@@ -5,18 +5,27 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 
 ---
 
-## Step 1: Clone the Repository
+## Step 1: Fork the Repository
+
+Go to [github.com/garv767/black-hole-game](https://github.com/garv767/black-hole-game) and click **Fork** (top right). This creates your own copy of the repo under your GitHub account.
+
+## Step 2: Clone Your Fork
 ```bash
-git clone https://github.com/garv767/black-hole-game.git
+git clone https://github.com/YOUR_USERNAME/black-hole-game.git
 ```
 
-## Step 2: Install Dependencies
+Then add the original repo as `upstream` so you can pull in changes from the main project:
 ```bash
 cd black-hole-game
+git remote add upstream https://github.com/garv767/black-hole-game.git
+```
+
+## Step 3: Install Dependencies
+```bash
 npm install
 ```
 
-## Step 3: Run the Development Server
+## Step 4: Run the Development Server
 ```bash
 npm run dev
 ```
@@ -25,7 +34,7 @@ npm run dev
 
 ---
 
-## Step 4: Project Structure
+## Step 5: Project Structure
 
 Keep it simple. Everything lives in 5 files:
 
@@ -42,7 +51,7 @@ No custom hooks. No separate utils folder. `App.jsx` owns all state and passes i
 
 ---
 
-## Step 5: Shared State Shape
+## Step 6: Shared State Shape
 
 Agree on this before branching. Garv commits it as a comment at the top of `App.jsx`:
 
@@ -57,7 +66,7 @@ Agree on this before branching. Garv commits it as a comment at the top of `App.
 // scores: { 1: 0, 2: 0, 3: 0 }
 ```
 
-## Step 6: Number Picker UI Convention
+## Step 7: Number Picker UI Convention
 
 Players pick their number from a **sticky chip tray at the bottom of the screen** — no keyboard, no modal. Suvarna builds this as part of the Board component.
 
@@ -76,20 +85,28 @@ Players pick their number from a **sticky chip tray at the bottom of the screen*
 
 ---
 
-## Step 7: Git Workflow
+## Step 8: Git Workflow
 
-Never work on `main`. Each person works on their own branch:
+Never work on `main`. Each person works on their own branch inside their fork:
 
 ```bash
+# Create your branch
 git checkout -b feature-your-task-name
 
-# when done:
+# ...make your changes...
+
 git add .
 git commit -m "feat: description of what you built"
 git push origin feature-your-task-name
 ```
 
-Then open a Pull Request on GitHub for review before merging.
+Then go to **your fork** on GitHub and click **"Compare & pull request"** to open a PR against `garv767/black-hole-game` (the original). Garv reviews and merges.
+
+**If the main repo has new changes since you forked**, sync before pushing:
+```bash
+git fetch upstream
+git merge upstream/main
+```
 
 **Branches:**
 - `feature-core-engine` — Garv
